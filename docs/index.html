@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>418 Labs</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f7fafc 100%);
+      margin: 0;
+      padding: 0;
+      color: #222;
+      min-height: 100vh;
+    }
+    .navbar {
+      width: 100%;
+      background: #4338ca;
+      color: #fff;
+      padding: 0 0;
+      box-shadow: 0 2px 8px rgba(67,56,202,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 36px;
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-link {
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link:hover {
+      color: #a5b4fc;
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(60,80,180,0.10);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #6366f1 0%, #a5b4fc 100%);
+      opacity: 0.18;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 0.5em;
+      color: #4338ca;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px rgba(67,56,202,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2em;
+      color: #4a5568;
+      position: relative;
+      z-index: 1;
+    }
+    .products {
+      margin-top: 2em;
+      position: relative;
+      z-index: 1;
+    }
+    .product {
+      background: linear-gradient(90deg, #f1f5f9 60%, #e0e7ff 100%);
+      border-radius: 12px;
+      padding: 32px 24px;
+      margin-bottom: 2em;
+      box-shadow: 0 4px 16px rgba(67,56,202,0.07);
+      display: flex;
+      align-items: center;
+      transition: box-shadow 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 8px 32px rgba(67,56,202,0.13);
+    }
+    .product-logo {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #6366f1 0%, #a5b4fc 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-right: 32px;
+      color: #fff;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(67,56,202,0.10);
+      border: 3px solid #fff;
+    }
+    .product-details {
+      flex: 1;
+    }
+    .product-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.3em;
+      color: #4338ca;
+      letter-spacing: 1px;
+    }
+    .product-desc {
+      font-size: 1.08rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .contact {
+      margin-top: 3em;
+      padding: 32px 24px;
+      background: linear-gradient(90deg, #e0e7ff 60%, #f1f5f9 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(67,56,202,0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #4338ca;
+      margin-bottom: 0.5em;
+    }
+    .contact-info {
+      font-size: 1.08rem;
+      color: #374151;
+      margin-bottom: 0.5em;
+    }
+    .contact-email {
+      font-size: 1.08rem;
+      color: #6366f1;
+      font-weight: 700;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .page {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      .nav-content {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 8px;
+      }
+      .container {
+        padding: 20px 8px;
+      }
+      .product {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 12px;
+      }
+      .product-logo {
+        margin-bottom: 16px;
+        margin-right: 0;
+        width: 56px;
+        height: 56px;
+        font-size: 2rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .contact {
+        padding: 18px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="#" class="nav-logo" onclick="showPage('home')">418 Labs</a>
+      <div class="nav-links">
+        <a href="#" class="nav-link" onclick="showPage('product')">Product</a>
+        <a href="#" class="nav-link" onclick="showPage('contact')">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div id="home" class="page active">
+      <h1>418 Labs</h1>
+      <p>Building innovative products for the modern web. Explore our latest creation below.</p>
+      <div class="products">
+        <div class="product">
+          <div class="product-logo">T</div>
+          <div class="product-details">
+            <div class="product-title">Tab.</div>
+            <div class="product-desc">Tab. is a food ordering app for restaurants. Streamline your dining experience, order from your table, and help restaurants serve you faster and better.</div>
+            <button onclick="showPage('product')" style="margin-top:1em;padding:0.7em 1.5em;background:#4338ca;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="product" class="page">
+      <h1>Tab. - Food Ordering for Restaurants</h1>
+      <div class="product">
+        <div class="product-logo">T</div>
+        <div class="product-details">
+          <div class="product-title">Tab.</div>
+          <div class="product-desc">Tab. is a modern food ordering app designed for restaurants. Customers can browse menus, place orders, and pay directly from their phones, making dining seamless and efficient for both guests and staff.<br><br>
+          <strong>Features:</strong>
+          <ul style="margin-top:0.5em;margin-bottom:0.5em;">
+            <li>Contactless menu browsing and ordering</li>
+            <li>Real-time order updates</li>
+            <li>Easy payment options</li>
+            <li>Table management for staff</li>
+            <li>Analytics for restaurant owners</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <button onclick="showPage('home')" style="margin-top:1em;padding:0.7em 1.5em;background:#4338ca;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Back to Home</button>
+    </div>
+    <div id="contact" class="page">
+      <h1>Contact Us</h1>
+      <div class="contact">
+        <div class="contact-title">Get in Touch</div>
+        <div class="contact-info">For inquiries, partnerships, or support, reach out to us at:</div>
+        <a class="contact-email" href="mailto:418labsllc@gmail.com">418labsllc@gmail.com</a>
+      </div>
+      <button onclick="showPage('home')" style="margin-top:1em;padding:0.7em 1.5em;background:#4338ca;color:#fff;border:none;border-radius:6px;font-size:1rem;cursor:pointer;">Back to Home</button>
+    </div>
+  </div>
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // Ensure Home is shown first on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      showPage('home');
+    });
+  </script>
+</body>
+</html>
